@@ -1,9 +1,10 @@
 'use client';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+// eslint-disable-next-line camelcase
 import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client';
 import { createTRPCReact } from '@trpc/react-query';
-import { useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { type AppRouter } from '@/server/api/root';
 import { getUrl, transformer } from './shared';
@@ -11,7 +12,7 @@ import { getUrl, transformer } from './shared';
 export const api = createTRPCReact<AppRouter>();
 
 export function TRPCReactProvider(props: {
-  children: React.ReactNode;
+  children: ReactNode;
   cookies: string;
 }) {
   const [queryClient] = useState(() => new QueryClient());

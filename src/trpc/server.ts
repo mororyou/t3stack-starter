@@ -1,14 +1,14 @@
 import {
   createTRPCProxyClient,
   loggerLink,
-  unstable_httpBatchStreamLink,
+  unstable_httpBatchStreamLink, // eslint-disable-line camelcase
 } from '@trpc/client';
 import { cookies } from 'next/headers';
 
 import { type AppRouter } from '@/server/api/root';
 import { getUrl, transformer } from './shared';
 
-export const api = createTRPCProxyClient<AppRouter>({
+const api = createTRPCProxyClient<AppRouter>({
   transformer,
   links: [
     loggerLink({
@@ -27,3 +27,5 @@ export const api = createTRPCProxyClient<AppRouter>({
     }),
   ],
 });
+
+export default api;
